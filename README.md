@@ -19,6 +19,7 @@ empresa
 página
 posição (de 1 a x - ordem que aparece na página)
 "parte" da pagina
+caracteres
 sessao (posterior - semi manual)
 tópicos (posterior - )
 entidades (posterior - BERT)
