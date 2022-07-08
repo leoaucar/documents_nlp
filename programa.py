@@ -1,22 +1,23 @@
-import PyPDF2 
+import PyPDF2
+import pandas as pd
+
+
+reports_text = pd.DataFrame()
+documents_list = []
+
+for document in documents_list:
+    caminho = 'Relatorios_VW/2016.pdf'
+    pdfFileObj = open(caminho, 'rb')
+    pdfReader = PyPDF2.PdfFileReader(pdfFileObj) 
     
-# creating a pdf file object 
-pdfFileObj = open('Relatorios_VW/2016.pdf', 'rb') 
-    
-# creating a pdf reader object 
-pdfReader = PyPDF2.PdfFileReader(pdfFileObj) 
-    
-# printing number of pages in pdf file 
-print(pdfReader.numPages) 
-    
-# creating a page object 
-pageObj = pdfReader.getPage(99) 
-    
-# extracting text from page 
-print(pageObj.extractText()) 
-    
-# closing the pdf file object 
-pdfFileObj.close()
+    while True:
+        page = 0
+        try:
+            pageObj = pdfReader.getPage(page)
+            page_text = pageObj.extractText()
+        except:
+            break
+    pdfFileObj.close()
 
 
 #loop for vai passar relatório por relatório
