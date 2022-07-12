@@ -14,7 +14,7 @@ for document in documents_list:
     new_documents_table = create_table()
     new_table = fill_table(new_documents_table, document)
     documents_df = concat_new_df(documents_df, new_table)
-documents_df.to_csv('teste.csv')
+documents_df.to_csv('base.csv')
 
 #loop for vai passar relatório por relatório
 #em cada relatório vai tentar extrair todas as páginas

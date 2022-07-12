@@ -19,5 +19,6 @@ def parse_page_text(page_text):
     parsed_text_list = []
     #quebrar em frases
     #ajustar em lista
-    
+    parsed_text_list = page_text #temporario para testar criador de tabela
+
     return parsed_text_list

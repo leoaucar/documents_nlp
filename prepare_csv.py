@@ -16,7 +16,7 @@ def fill_table(documents_table,file_path):
     while True:
         try:
             page_text = extract_page_text(file_path,page)
-            new_texts_= parse_page_text(page_text)
+            new_texts = parse_page_text(page_text)
             texts_list.append(new_texts)
 
             #preencher colunas
