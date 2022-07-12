@@ -1,47 +1,20 @@
 import PyPDF2
 import pandas as pd
 
+from prepare_csv import concat_new_df, create_table, fill_table
 
-reports_text = pd.DataFrame()
+try:
+    documents_df = pd.read_csv("base.csv")
+except:
+    documents_df = create_table()
+    documents_df.to_csv("base.csv")
+
 documents_list = []
-
-columns = ["id","text","document","year","company","page",
-"pg_order","length","segment","topic","entities","sentiment"]
-documents_df = pd.DataFrame(columns = columns)
-
-#ler os para pegar diretorio
-
-documents_list = ["a"]
 for document in documents_list:
-    caminho = 'Relatorios_VW/2016.pdf'
-    pdfFileObj = open(caminho, 'rb')
-    pdfReader = PyPDF2.PdfFileReader(pdfFileObj) 
-    
-    page = 49
-    while page < 50:
-        try:
-            df_temp = pd.DataFrame(columns = columns)
-
-            pageObj = pdfReader.getPage(page)
-            page_text = pageObj.extractText()
-            print(page_text)
-            #quebrar texto em paragrafos e dps...
-            df_temp.loc[0,['text']] = str(page_text)
-            #passar documento (VW2016, ST2005 etc...)
-            #passar ano
-            #empresa
-            #pagina
-            #ordem
-            #comprimento
-            #documents_df.concat(df_temp)
-            page = page + 1
-
-        except:
-            break
-    pdfFileObj.close()
-    df_temp.to_csv('TESTE.csv')
-
-    #documents_df.to_csv('teste.csv')
+    new_documents_table = create_table()
+    new_table = fill_table(new_documents_table, document)
+    documents_df = concat_new_df(documents_df, new_table)
+documents_df.to_csv('teste.csv')
 
 #loop for vai passar relatório por relatório
 #em cada relatório vai tentar extrair todas as páginas
