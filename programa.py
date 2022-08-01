@@ -4,17 +4,32 @@ import pandas as pd
 from prepare_csv import concat_new_df, create_table, fill_table
 
 try:
-    documents_df = pd.read_csv("base.csv")
+    documents_df = pd.read_csv("base.csv") #le o documento consolidado
 except:
-    documents_df = create_table()
-    documents_df.to_csv("base.csv")
+    documents_df = create_table() #caso nao exista, cria esse doc
+    documents_df.to_csv("base.csv", index=False)
 
-documents_list = []
+import os
+
+# folder path
+dir_path = r'./Relatorios_VW'
+
+# list to store files
+documents_list = [] #pegar lista de documentos
+
+# Iterate directory
+for path in os.listdir(dir_path):
+    # check if current path is a file
+    if os.path.isfile(os.path.join(dir_path, path)):
+        documents_list.append(path)
+print(documents_list)
+
+
+
 for document in documents_list:
-    new_documents_table = create_table()
-    new_table = fill_table(new_documents_table, document)
-    documents_df = concat_new_df(documents_df, new_table)
-documents_df.to_csv('base.csv')
+    new_documents_table = fill_table("./Relatorios_VW/" + document)
+    documents_df = concat_new_df(documents_df, new_documents_table)
+documents_df.to_csv('base.csv', index=False)
 
 #loop for vai passar relatório por relatório
 #em cada relatório vai tentar extrair todas as páginas

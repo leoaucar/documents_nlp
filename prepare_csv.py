@@ -9,11 +9,12 @@ def create_table():
 
     return documents_table
 
-def fill_table(documents_table,file_path):
+def fill_table(file_path):
+    new_documents_table = create_table()
     texts_list = []
     new_texts = []
-    page = 0
-    while True:
+    page = 55
+    while page < 57:
         try:
             page_text = extract_page_text(file_path,page)
             new_texts = parse_page_text(page_text)
@@ -34,8 +35,8 @@ def fill_table(documents_table,file_path):
     #recebe lugar
     #recebe comprimento
     #recebe segmento
-    return documents_table
+    return new_documents_table
 
-def concat_new_df(consolidated_documents_df, documents_df):
-    consolidated_documents_df = consolidated_documents_df.concat(documents_df)
+def concat_new_df(consolidated_documents_df, new_documents_table):
+    consolidated_documents_df = pd.concat([consolidated_documents_df, new_documents_table], ignore_index=True)
     return consolidated_documents_df
