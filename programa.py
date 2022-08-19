@@ -1,5 +1,6 @@
 import PyPDF2
 import pandas as pd
+import os
 
 from prepare_csv import concat_new_df, create_table, fill_table
 
@@ -9,7 +10,6 @@ except:
     documents_df = create_table() #caso nao exista, cria esse doc
     documents_df.to_csv("base.csv", index=False)
 
-import os
 
 # folder path
 dir_path = r'./Relatorios_VW'
@@ -25,7 +25,7 @@ for path in os.listdir(dir_path):
 print(documents_list)
 
 
-
+#concatena DF com textos
 for document in documents_list:
     new_documents_table = fill_table("./Relatorios_VW/" + document)
     documents_df = concat_new_df(documents_df, new_documents_table)
