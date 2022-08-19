@@ -1,5 +1,14 @@
 import PyPDF2
 
+#extrai dados do documento
+def doc_length(file_path):
+    caminho = file_path
+    pdfFileObj = open(caminho, 'rb')
+    pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
+    doc_len = len(pdfReader.pages)
+    pdfFileObj.close()
+    return doc_len
+
 #extrai o texto bruto da página
 def extract_page_text(file_path, page):
     caminho = file_path

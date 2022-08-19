@@ -1,7 +1,8 @@
 from hashlib import new
+from pydoc import doc
 import pandas as pd
 
-from clean_text import extract_page_text, parse_page_text
+from clean_text import extract_page_text, parse_page_text, doc_length
 
 
 #cria uma tabela com as colunas corretas
@@ -19,8 +20,10 @@ def fill_table(file_path):
     new_texts = []
 
 #loop indo de página em página do relatório
-    page = 55
-    while page < 57:
+    page = 0
+    doc_len = doc_length(file_path)
+    print(doc_len)
+    while page <= (doc_len):
         try:
             page_text = extract_page_text(file_path,page)
             new_texts = parse_page_text(page_text)
@@ -28,6 +31,8 @@ def fill_table(file_path):
             #print(texts_list) #--> texta se esta pegando texto
             #preencher colunas
             page = page + 1
+            print('pagina ' + str(page) + " de "
+            + str(doc_len) + " processada")
         except:
             break
 
@@ -40,13 +45,15 @@ def fill_table(file_path):
         #print(new_documents_table.iloc[[0]])
         id = id + 1
     
-    for i in new_documents_table['text']:
-        print(i)
+    #for i in new_documents_table['text']:
+        #print(i)
     return new_documents_table
 
 # concatena essa nova tabela a tabela principal
 def concat_new_df(consolidated_documents_df, new_documents_table):
-    consolidated_documents_df = pd.concat([consolidated_documents_df, new_documents_table], ignore_index=True)
+    consolidated_documents_df = pd.concat(
+        [consolidated_documents_df,new_documents_table],
+        ignore_index=True)
     return consolidated_documents_df
 
 

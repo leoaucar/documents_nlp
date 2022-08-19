@@ -20,13 +20,16 @@ for path in os.listdir(dir_path):
     # garante que é um arquivo
     if os.path.isfile(os.path.join(dir_path, path)):
         documents_list.append(path)
-print(documents_list)
+print("Documentos processados: " + 
+    str(documents_list))
 
 #concatena DF com textos
 for document in documents_list:
     new_documents_table = fill_table("./Relatorios_VW/" + document)
     documents_df = concat_new_df(documents_df, new_documents_table)
-documents_df.to_csv('base.csv', index=False)
+
+#salva base processada num CSV
+documents_df.to_csv('base.csv', escapechar="|", index=False)
 
 
 
