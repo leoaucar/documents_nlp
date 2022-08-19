@@ -1,12 +1,25 @@
-README
+# README
 
-Objetivo
-sistema para ler documentação de ind. automotiva
+## Objetivos, metodologia e casos de uso
 
-Metodologia
+### Metodologia
 artigos sobre NLP
 
-Desenho da base
+### Objetivo e usos
+O sistema é desenhado em função de analisar relatórios anuais da industria automotiva. Ele visa permitir não só a extração de dados, mas assessorar pesquisadores da área através de analises textuais automatizadas. Isso se dará em quatro frentes:
+
+* disponibilização dos dados para buscas rápidas
+* análises de conteúdo simples/quantitativas
+* análises não supervisionadas do conteúdo dos textos
+* análises supervisionadas          ''   ''
+
+### Casos de uso
+
+## Desenho do sistema
+
+### fluxo do sistema
+
+### Desenho da base
 cada prágrafo é uma entrada única na base
 (um documento)
 
@@ -23,6 +36,8 @@ caracteres
 sessao (posterior - semi manual)
 tópicos (posterior - )
 entidades (posterior - BERT)
+
+### Scripts e funções
 
 O Script programa.py executa as funções principais. Nos scripts auxiliares estão as definições de funções.
 

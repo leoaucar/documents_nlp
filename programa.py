@@ -1,9 +1,10 @@
-import PyPDF2
 import pandas as pd
 import os
 
 from prepare_csv import concat_new_df, create_table, fill_table
 
+
+#prepara um CSV base caso não haja algum
 try:
     documents_df = pd.read_csv("base.csv") #le o documento consolidado
 except:
@@ -11,25 +12,25 @@ except:
     documents_df.to_csv("base.csv", index=False)
 
 
-# folder path
+# identifica o diretorio e lista os documentos a serem lidos
 dir_path = r'./Relatorios_VW'
-
-# list to store files
 documents_list = [] #pegar lista de documentos
 
-# Iterate directory
 for path in os.listdir(dir_path):
-    # check if current path is a file
+    # garante que é um arquivo
     if os.path.isfile(os.path.join(dir_path, path)):
         documents_list.append(path)
 print(documents_list)
-
 
 #concatena DF com textos
 for document in documents_list:
     new_documents_table = fill_table("./Relatorios_VW/" + document)
     documents_df = concat_new_df(documents_df, new_documents_table)
 documents_df.to_csv('base.csv', index=False)
+
+
+
+
 
 #loop for vai passar relatório por relatório
 #em cada relatório vai tentar extrair todas as páginas
