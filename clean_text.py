@@ -7,7 +7,8 @@ def doc_length(file_path):
     pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
     doc_len = len(pdfReader.pages)
     pdfFileObj.close()
-    return doc_len
+    return doc_len#,doc_name, doc_year, doc_company
+    #mudar a funcao para extrair dados do documento
 
 #extrai o texto bruto da página
 def extract_page_text(file_path, page):
@@ -29,7 +30,9 @@ def export_page_txt(file_name, page_text):
 def parse_page_text(page_text):
     parsed_text_list = []
     #quebrar em frases
-    #ajustar em lista
-    parsed_text_list = page_text #temporario para testar criador de tabela
+    splitted_sentences = page_text.split(".")
+    for i in splitted_sentences:
+        print(i)
+        parsed_text_list.append(i) #temporario para testar criador de tabela
 
     return parsed_text_list

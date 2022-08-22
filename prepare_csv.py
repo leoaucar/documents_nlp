@@ -27,8 +27,10 @@ def fill_table(file_path):
         try:
             page_text = extract_page_text(file_path,page)
             new_texts = parse_page_text(page_text)
-            texts_list.append(new_texts)
-            #print(texts_list) #--> texta se esta pegando texto
+            for i in new_texts:
+                #chamar aqui a correção do texto sobre i
+                texts_list.append(i)
+
             #preencher colunas
             page = page + 1
             print('pagina ' + str(page) + " de "
@@ -44,9 +46,7 @@ def fill_table(file_path):
         new_documents_table = pd.concat([new_documents_table,df_i])
         #print(new_documents_table.iloc[[0]])
         id = id + 1
-    
-    #for i in new_documents_table['text']:
-        #print(i)
+
     return new_documents_table
 
 # concatena essa nova tabela a tabela principal
