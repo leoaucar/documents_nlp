@@ -13,7 +13,7 @@ except:
 
 
 # identifica o diretorio e lista os documentos a serem lidos
-dir_path = r'./Relatorios_VW'
+dir_path = r'./Relatorios_Volkswagen'
 documents_list = [] #pegar lista de documentos
 
 for path in os.listdir(dir_path):
@@ -25,7 +25,7 @@ print("Documentos processados: " +
 
 #concatena DF com textos
 for document in documents_list:
-    new_documents_table = fill_table("./Relatorios_VW/" + document)
+    new_documents_table = fill_table("./Relatorios_Volkswagen/" + document)
     documents_df = concat_new_df(documents_df, new_documents_table)
 
 #salva base processada num CSV

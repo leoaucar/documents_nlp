@@ -1,4 +1,6 @@
+from distutils.command.clean import clean
 import PyPDF2
+import re
 
 #extrai dados do documento
 def doc_length(file_path):
@@ -29,10 +31,16 @@ def export_page_txt(file_name, page_text):
 #trata o texto da página para ser uma lista de sentenças
 def parse_page_text(page_text):
     parsed_text_list = []
-    #quebrar em frases
-    splitted_sentences = page_text.split(".")
+    #quebra em frases
+    pattern_split = r"(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s"
+    splitted_sentences = re.split(pattern_split, page_text)
     for i in splitted_sentences:
-        print(i)
-        parsed_text_list.append(i) #temporario para testar criador de tabela
+        #trata cada sentença separadamente
+        clean_sentence = i.replace("\n", " ")
+        clean_sentence = re.sub(r'\s{2,}', " ", clean_sentence)
+        clean_sentence = clean_sentence.strip()
+        if clean_sentence != "":
+            print(clean_sentence)
+            parsed_text_list.append(clean_sentence) #temporario para testar criador de tabela
 
     return parsed_text_list
