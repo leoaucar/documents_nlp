@@ -72,3 +72,8 @@ def concat_new_df(consolidated_documents_df, new_documents_table):
 
     #recebe comprimento
     #recebe segmento
+
+def column_types(df):
+    df["year"] = pd.to_numeric(df["year"])
+    df["page"] = pd.to_numeric(df["page"])
+    return df

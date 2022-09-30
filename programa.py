@@ -1,7 +1,8 @@
 import pandas as pd
 import os
 
-from prepare_csv import concat_new_df, create_table, fill_table
+from prepare_csv import concat_new_df, create_table, fill_table, column_types
+from clean_text import nltk_cleaning
 
 
 #prepara um CSV base caso não haja algum
@@ -27,6 +28,9 @@ print("Documentos processados: " +
 for document in documents_list:
     new_documents_table = fill_table("./Relatorios_Volkswagen/" + document)
     documents_df = concat_new_df(documents_df, new_documents_table)
+
+#documents_df = column_types(documents_df)
+#documents_df = nltk_cleaning(documents_df)
 
 #salva base processada num CSV
 documents_df.to_csv('base.csv', escapechar="|", index=False)

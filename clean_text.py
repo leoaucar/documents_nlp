@@ -44,3 +44,7 @@ def parse_page_text(page_text):
             parsed_text_list.append(clean_sentence) #temporario para testar criador de tabela
 
     return parsed_text_list
+
+def nltk_cleaning(document_df):
+    print("Hello")
+    return document_df
