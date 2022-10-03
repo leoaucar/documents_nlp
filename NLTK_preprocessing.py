@@ -12,11 +12,11 @@ from nltk.corpus import stopwords
 
 from collections import Counter
 
-
+stopwords = stopwords.words('english')
 
 
 def nltk_cleaning(document_df):
-    stopwords = stopwords.words('english')
+
 
     report_sentences = document_df['text'].copy()
 
