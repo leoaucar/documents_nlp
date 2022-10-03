@@ -45,6 +45,3 @@ def parse_page_text(page_text):
 
     return parsed_text_list
 
-def nltk_cleaning(document_df):
-    print("Hello")
-    return document_df
