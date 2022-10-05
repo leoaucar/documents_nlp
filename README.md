@@ -1,16 +1,15 @@
 <!-- antes de enviar a versão final, solicitamos que todos os comentários, colocados para orientação ao aluno, sejam removidos do arquivo -->
 # Raspagem de relatórios da indústria automotiva para projeto de NLP
 
-#### Aluno: [Nome Sobrenome](https://github.com/link_do_github)
+#### Aluno: [Leonardo Nogueira Aucar](https://github.com/leoaucar)
 #### Orientadora: [Nome Sobrenome](https://github.com/link_do_github)
 
 ---
 
 Trabalho apresentado ao curso [BI MASTER](https://ica.puc-rio.ai/bi-master) como pré-requisito para conclusão de curso e obtenção de crédito na disciplina "Projetos de Sistemas Inteligentes de Apoio à Decisão".
 
-<!-- para os links a seguir, caso os arquivos estejam no mesmo repositório que este README, não há necessidade de incluir o link completo: basta incluir o nome do arquivo, com extensão, que o GitHub completa o link corretamente -->
-- [Link para o código](https://github.com/link_do_repositorio). <!-- caso não aplicável, remover esta linha -->
-
+- [Link para o código](https://github.com/leoaucar/documents_nlp)
+- [Link para os relatórios]()
 ---
 
 ### Resumo
@@ -67,49 +66,104 @@ A seguir, serão descritas brevemente essas etapas a partir da descrição dos s
 ##### program.py - Execução do programa
 O script principal, acessa os demais scripts para execução. Inicialmente faz uma leitura do diretório buscando identificar a existência da base, caso não cria uma. Em seguida faz a listagem de todos os relatórios dentro da pasta para serem processados.
 
-''' python
-for i in list:
-    print(i)
-'''
+```
+try:
+    documents_df = pd.read_csv("base.csv") #le o documento consolidado
+except:
+    documents_df = create_table() #caso nao exista, cria esse doc
+    documents_df.to_csv("base.csv", index=False)
+
+dir_path = r'./Relatorios_Volkswagen'
+documents_list = [] #pegar lista de documentos
+
+for path in os.listdir(dir_path):
+    # garante que é um arquivo
+    if os.path.isfile(os.path.join(dir_path, path)):
+        documents_list.append(path)
+print("Documentos processados: " + 
+    str(documents_list))
+```
 
 Em seguida passa esses relatórios um a um via par ao script prepare_csv.py que realizará a preparação de cada relatório.
 
-''' python
-for i in list:
-    print(i)
-'''
+```
+for document in documents_list:
+    new_documents_table = fill_table("./Relatorios_Volkswagen/" + document)
+    documents_df = concat_new_df(documents_df, new_documents_table)
+```
 
 Após esses relatórios prontos, chama os scripts para pré-processamento do texto inclusos em NLTK_preprocessing.py e salva uma vez mais a base.
 
-''' python
-for i in list:
-    print(i)
-'''
+```
+documents_df.to_csv('base.csv', escapechar="|", index=False)
+
+df = pd.read_csv('base.csv')
+new_df = nltk_cleaning(df)
+new_df.to_csv('base.csv')
+```
 
 ##### prepare_csv.py - Preparação das tabelas
 Recebe os relatórios um a um e executa a preparação das tabelas com alocação de metadados baseados nos documentos. Primeira parte é a preparação de um data frame para o relatório a ser processado e identificação dos metadados.
 
-'''
-for i in list:
-    print(i)
-'''
+```
+def fill_table(file_path):
+    new_documents_table = create_table()
+    texts_list = []
+    new_texts = []
 
-Para processamento do texto em si, são utilizadas duas funções do script clean_text.py e também é identificada a página da qual cada texto é retirado.
-''' python
-for i in list:
-    print(i)
-'''
+#trecho abaixo extrai os metadados que identificam de qual relatório/documento, empresa e ano o texto é referente
+    m = re.search('Relatorios_(.*)', str(file_path))
+    company_name = m.group(0)[11:-9]
+    year = str(file_path[-8:-4])
+    document_name = str(company_name) + " Annual report " + str(year)
+```
+
+Para processamento do texto em si, são utilizadas duas funções do script clean_text.py. Também é identificada a página da qual cada texto é retirado.
+
+```
+    page = 0
+    doc_len = doc_length(file_path)
+    print("processando " + str(doc_len) + " páginas")
+    while page < (doc_len-1):
+        try:
+            page_text = extract_page_text(file_path,page)
+            new_texts = parse_page_text(page_text)
+            for i in new_texts:
+                #chamar aqui a correção do texto sobre i
+                texts_list.append((i, page))
+
+            #preencher colunas
+            page = page + 1
+            print('pagina ' + str(page) + " de "
+            + str(doc_len) + " processada")
+        except:
+            print("erro página " + str(page))
+            continue
+```
 
 Por fim, a gravação dos metadados no dataframe é feita com o seguinte trecho
-''' python
-for i in list:
-    print(i)
-'''
+
+```
+    id=0
+    for i in texts_list:
+        try:
+            d = {'id':[id],'text':[i[0]], 'document':[document_name],
+            'year':[year], 'company':[company_name],
+            'page':[i[1]]}
+            df_i = pd.DataFrame(data=d)
+            new_documents_table = pd.concat([new_documents_table,df_i])
+            id = id + 1
+        except:
+            print("erro id " + str(id))
+            continue
+
+    return new_documents_table
+```
 
 ##### clean_text.py - limpeza inicial do texto e segmentação em sentenças
 especificamente trata os textos extraídos, separando em sentenças. É importante notar que, na extração de texto bruto, as sentenças frequentemente eram separadas por quebras de linha ('/n'). Em função disso, optou-se pela separação do texto em sentenças e não parágrafos. A seguinte função realiza a extração bruta do texto
 
-'''
+```
 def extract_page_text(file_path, page):
     caminho = file_path
     pdfFileObj = open(caminho, 'rb')
@@ -118,11 +172,11 @@ def extract_page_text(file_path, page):
     page_text = pageObj.extractText()
     pdfFileObj.close()
     return page_text
-'''
+```
 
 Ja o trecho a seguir realiza a separação do texto de cada página em sentenças e realiza a limpeza de caractéres básica. Como forma de separação de sentenças usou-se a seguinte expressão regular: r"(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s"
 
-'''
+```
 #trata o texto da página para ser uma lista de sentenças
 def parse_page_text(page_text):
     parsed_text_list = []
@@ -139,17 +193,73 @@ def parse_page_text(page_text):
             parsed_text_list.append(clean_sentence) #temporario para testar criador de tabela
 
     return parsed_text_list
-'''
+```
 
 ##### nltk_preprocessing.py - Pré processamento do texto bruto
-realiza pré processamento de todo o texto bruto para a NLP e armazena numa coluna que será acessada pelas outras análises de NLP
+Realiza pré processamento de todo o texto bruto para a NLP e armazena o resultado em duas colunas: lems e tags. Para tais funções foi utilizada a biblioteca NLTK. O script abaixo realiza as limpezas necessárias. Isso é feito pela leitura do texto bruto na base salva, tokenização e passagem das palavras para minúsculas, remoção de stopwords, stemming e lemmetização. Adicionalmente é feito o taggeamento das palavras antes de passar por steeming e lemmetização.
+
+```
+def nltk_cleaning(document_df):
+
+
+    report_sentences = document_df['text'].copy()
+
+    df_lems= pd.DataFrame()
+    df_tags = pd.DataFrame()
+
+    lems_list = []
+    tags_list = []
+
+    for sent in report_sentences:
+        #tokenização e deixar em minúsculas
+        lower_words = [word.lower() for word in word_tokenize(sent)]
+        
+        #tratamentos de texto
+        clean_words = (re.sub("[^A-Za-z']+", ' ', str(word)).lower() for word in lower_words)
+        clean_words = (word for word in clean_words if len(word) > 1)
+
+
+        #remover stopwords
+        clean_words = [word for word in clean_words if word not in stopwords]
+        
+        #Stemming
+        stemmer = stem.PorterStemmer()
+        stem_words = [stemmer.stem(word) for word in clean_words]
+        
+        #lemmatização
+        lemmetizer = WordNetLemmatizer()
+        palavras_lem = [lemmetizer.lemmatize(word) for word in stem_words]
+        lems_list.append(palavras_lem)
+        
+        #taggind das palavras
+        tags = [nltk.pos_tag([word]) for word in clean_words]
+        tags_list.append(tags)
+```
+
+Em seguida é realizada a concatenação dos dataframes com os textos pré-processados no dataframe original e novamente este é salvo como base.csv, concluíndo o processo.
 
 ##### sentiment.py
-Como prova de conceito
+Como prova de conceito da aplicabilidade do projeto, foi feita a análise de sentimentos de cada sentença a partir de um modelo pré-treinado. Os resultados são salvos em duas colunas referentes a polaridade e subjetividade das sentenças. O novo dataframe é salvo como um csv próprio.
 
-#### A base de dados
-<p>A base é constituída a partir de relatórios anuais com informações de empresas da indústria automotiva. A ênfase é nos <i>conteúdos textuais</i> dos relatórios, deixando-se em segundo plano tabelas e dados financeiros.</p>
-<p>Cada relatório é "raspado" com auxílio da biblioteca PyPDF2. O texto é extraído por página e depois separado em sentenças a partir do uso de expressões regulares. Algumas informações referentes a cada sentênça sao armazenadas em colunas adicionais. Essas colunas são: </p>
+```
+df = pd.read_csv('base.csv')
+
+sentiments = []
+for i in df['lems']:
+    sentence = TextBlob(str(i))
+    sentiments.append(sentence.sentiment)
+
+df_sentiments = pd.DataFrame(data = sentiments)
+sentiments_df = pd.concat([df,df_sentiments], axis=1)
+sentiments_df.to_csv("sentiment.csv")
+```
+
+A expectativa é futuramente substituir o modelo pré-treinado da biblioteca textblob por um modelo baseado no aprendizado supervisionado. Para isso planeja-se realizar uma amostragem das sentenças, classificando-as em positivas ou negativas e posteriormente usando o modelo treinado com base nessa amostragem para classificar as demais sentenças.
+
+Também se propõe utilizar os dados para realizar tanto uma identificação de entidades no texto, como também uma classificação não supervisionada deste por tópicos. Ambas as etapas serão feitas na continuidade desse projeto como parte da análise de dados para o doutorado do autor.
+
+#### A base de dados resultante
+<p>A base é constituída a partir de relatórios anuais com informações de empresas da indústria automotiva. Como já dito, a ênfase é nos <i>conteúdos textuais</i> dos relatórios, deixando-se em segundo plano tabelas e dados financeiros. Para além do texto bruto foram coletados metadados referentes a cada uma das sentenças. Abaixo um resumo das colunas da base:</p>
 
 * id --> identificador único daquela sentença na base
 * text --> texto bruto extraído da sentença
@@ -163,12 +273,18 @@ Em seguida, como descrito a cima foram préprocessados os textos brutos, resulta
 * lems --> versão das sentenças já limpeza de stopwords, steeming e lemmetização
 * tags --> versão das sentenças com palavras sem steeming ou lemetização e com pos-tag
 
-Todas as colunas acima foram agregadas na base base.csv.
+Todas as colunas acima foram agregadas na base base.csv. A imagem abaixo sumariza as colunas da base com base nas primeiras 20 linhas.
+
+IMAGEM
 
 Por fim, a prova de conceito de análise de sentimetno resultou em:
 * polarity --> identificação do grau de positividade ou negatividade da sentença
 * subjectivity --> identificação do grau em que a sentença é considerada uma opinião subjetiva
 Essas colunas foram salvas apenas numa versão da base entitulada "sentiments.csv"
+
+A imagem abaixo sumariza os resultados da análise de sentimentos para as 20 primeiras linhas.
+
+IMAGEM
 
 Futuramente propõe-se que serão adicionadas outros metadados sobre as sentenças:
 * words --> dicionário de contagem de palavras únicas na sentença
@@ -185,7 +301,7 @@ Como resultado inicial da análise de 9 relatórios obteve-se uma base de dados 
 
 IMAGEM
 
-Assim, espera-se que, com o crescimetno da base via inserção de relatórios de utros anos e empresas, e complementação dos metadados (seja manualmente, automaticamente via técnicas supervisionadas ou não supervisionadas) seja possível realizar agregações e comparações do conteúdo textual - e seus significados - ao longo do tempo e também entre categorias distintas (por exemplo, observar a mudança do sentimento médio das sentenças em empresas distintas ou em seções distintas dos documentos).
+Assim, espera-se que, com o crescimento da base via inserção de relatórios de utros anos e empresas, e complementação dos metadados (seja manualmente, automaticamente via técnicas supervisionadas ou não supervisionadas) seja possível realizar agregações e comparações do conteúdo textual - e seus significados - ao longo do tempo e também entre categorias distintas (por exemplo, observar a mudança do sentimento médio das sentenças em empresas distintas ou em seções distintas dos documentos).
 
 ### 4. Conclusões
 
