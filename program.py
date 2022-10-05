@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 
-from prepare_csv import concat_new_df, create_table, fill_table, column_types
+from prepare_csv import concat_new_df, create_table, fill_table
 from NLTK_preprocessing import nltk_cleaning
 
 
@@ -24,13 +24,12 @@ for path in os.listdir(dir_path):
 print("Documentos processados: " + 
     str(documents_list))
 
+
 #concatena DF com textos
 for document in documents_list:
     new_documents_table = fill_table("./Relatorios_Volkswagen/" + document)
     documents_df = concat_new_df(documents_df, new_documents_table)
 
-#documents_df = column_types(documents_df)
-#documents_df = nltk_cleaning(documents_df)
 
 #salva base processada num CSV
 documents_df.to_csv('base.csv', escapechar="|", index=False)

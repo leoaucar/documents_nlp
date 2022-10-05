@@ -19,14 +19,13 @@ def fill_table(file_path):
     texts_list = []
     new_texts = []
 
-    #/home/leoaucar/Documents/documents_nlp/Relatorios_VW/2015.pdf
-    
+#trecho abaixo extrai os metadados que identificam de qual relatório/documento, empresa e ano o texto é referente
     m = re.search('Relatorios_(.*)', str(file_path))
     company_name = m.group(0)[11:-9]
     year = str(file_path[-8:-4])
     document_name = str(company_name) + " Annual report " + str(year)
 
-#loop indo de página em página do relatório
+#loop indo de página em página do relatório, também realiza a marcação da página da qual cada sentença é retirada
     page = 0
     doc_len = doc_length(file_path)
     print("processando " + str(doc_len) + " páginas")
