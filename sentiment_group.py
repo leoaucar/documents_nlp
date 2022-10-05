@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv('sentiments_base.csv')
+df = pd.read_csv('sentiment.csv')
 df = df[['year','polarity']]
 
 groups = df.groupby(by='year').mean()
