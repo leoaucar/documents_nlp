@@ -12,7 +12,7 @@ Trabalho apresentado ao curso [BI MASTER](https://ica.puc-rio.ai/bi-master) como
 
 ### Resumo
 
-O sistema é desenhado em função de analisar relatórios anuais da industria automotiva. Ele visa permitir não só a extração de dados, mas assessorar pesquisadores da área através de analises textuais automatizadas. Para isso ele realiza a raspagem de todo o texto dos relatórios e separa em sentenças. Posteriormente é feita a limpeza dessas sentenças com metadados apropriados. Após isso, é feito seu pré-processamento, resultando em duas versões das sentenças: lemmetizadas e não lemmetizadas com pos-tag. Foi então, a título de prova de conceito, realizada a análise de sentimentos dessas sentenças com base na biblioteca TextBlob. Pode-se resumir os objetivos do projeto:
+O sistema é desenhado em função de analisar relatórios anuais da indústria automotiva. Ele visa permitir não só a extração de dados, mas assessorar pesquisadores da área através de análises textuais automatizadas. Para isso ele realiza a raspagem de todo o texto dos relatórios e separa em sentenças. Posteriormente é feita a limpeza dessas sentenças com metadados apropriados. Após isso, é feito seu pré-processamento, resultando em duas versões das sentenças: lemmetizadas e não lemmetizadas com pos-tag. Foi então, a título de prova de conceito, realizada a análise de sentimentos dessas sentenças com base na biblioteca TextBlob. Pode-se resumir os objetivos do projeto:
 
 * Produção de um banco de dados a partir dos conteúdos textuais de relatórios da indústria automotiva
 * Fornecer insumos para análises de conteúdo simples/quantitativas
@@ -20,7 +20,7 @@ O sistema é desenhado em função de analisar relatórios anuais da industria a
 
 ### Abstract
 
-The system was designed with the purpose of analysing annual reports from the automotive industry. It aims to not only extract the textual data from the reports, but to make it available to other reasearchers and simplify the process of text analysis. With this in mind, it scraps all the text from annual reports and segment them as sentences with apropriate metadata. After, this sentences go through a cleaning processes and are pre-processed, resulting in two versios of the raw data: a lemmetized version and a non-lemmetized but pos-tagged version. As a proof of concept we ran a sentiment analysis of the sentences through the library textBlob. We can summarize the objectives of the project as the following:
+The system was designed with the purpose of analyzing annual reports from the automotive industry. It aims to not only extract the textual data from the reports, but to make it available to other researchers and simplify the process of text analysis. With this in mind, it scraps all the text from annual reports and segments them as sentences with appropriate metadata. After, sentences go through a cleaning process and are pre-processed, resulting in two versions of the raw data: a lemmatized version and a non-lemmatized but pos-tagged version. As a proof of concept we ran a sentiment analysis of the sentences through the library textBlob. We can summarize the objectives of the project as the following:
 
 * Creation of a automotive industry annual reports text database
 * to supply data for content analysis
@@ -31,21 +31,21 @@ The system was designed with the purpose of analysing annual reports from the au
 
 #### 1.1 Metodologia
 
-O trabalho se insere simultaneamente no campo da sociologia econômica e das ciências da computação. Dessa maneira, propõe utilização de metodologias de localização e obtenção de dados e também de processamento de linguagem natural comuns a ciência da computação para produção de análises sociológicas. Se alinha portanto a uma perspectiva estrutural e de rede, que vê documentos corporativos enquanto artefatos que podem ser mobilizados como proxy do comportamento organizacional e portanto, que podem ser analisados enquanto proxy para compreensão do vocabulário de motivos e quadro moral da ação organizacional. A ênfase em documentos enquanto artefatos, para além sua consideração enquanto artefatos etnográficos, que se incluem na tradição da antropologia dos documentos e burocracia (Lowenkron e Ferreira, 2014, Hull, 2012), também dialoga com a compreensão das organizações econômicas enquanto redes sociomateriais (Latour, 2005), onde os documentos fazem extamente o papel de agregação de associações capazes de colocar a organização em movimento.
+O trabalho se insere simultaneamente no campo da sociologia econômica e das ciências da computação. Dessa maneira, propõe utilização de metodologias de localização e obtenção de dados e também de processamento de linguagem natural comuns à ciência da computação para produção de análises sociológicas. Se alinha portanto a uma perspectiva estrutural e de rede, que vê documentos corporativos enquanto artefatos que podem ser mobilizados como proxy do comportamento organizacional e portanto, que podem ser analisados enquanto proxy para compreensão do vocabulário de motivos e quadro moral da ação organizacional. A ênfase em documentos enquanto artefatos, para além sua consideração enquanto artefatos etnográficos, que se incluem na tradição da antropologia dos documentos e burocracia (Lowenkron e Ferreira, 2014, Hull, 2012), também dialoga com a compreensão das organizações econômicas enquanto redes sócio materiais (Latour, 2005), onde os documentos fazem exatamente o papel de agregação de associações capazes de colocar a organização em movimento.
 
-Metodologicamente o trabalho se ampara no uso de técnicas de processamento de linguagem natural pela sociologia como exemplificado em Evans e Aceves (2016). Em particular, Kozlowski, Taddy e Evans (2019) já demonstram como é possível utilizar grandes volumes de texto para analisar as mudanças de sentimento e relação entre termos e categorias sociológicas, como gênero, classe e raça. Já DiMaggio, Nag e Blei (2013) demonstram a utilização de técnicas de modelagem de tópico no campo da análise cultural. A proposta aqui é produzir um insumo - a base de dados - a ser futuramente utilizadas em estudos aprofundados sobre a temática das estratégias corporativas na indústria automotiva. Fundamentalmente o trabalho propiciará análises de caráter comparativo institucional e histórico, na medida que se observará como determinadas categorias evoluem e se transformam no tempo em instituições - no caso empresas ou setores de empresas - distintas.
+Metodologicamente o trabalho se ampara no uso de técnicas de processamento de linguagem natural pela sociologia como exemplificado em Evans e Aceves (2016). Em particular, Kozlowski, Taddy e Evans (2019) já demonstram como é possível utilizar grandes volumes de texto para analisar as mudanças de sentimento e relação entre termos e categorias sociológicas, como gênero, classe e raça. Já DiMaggio, Nag e Blei (2013) demonstram a utilização de técnicas de modelagem de tópico no campo da análise cultural. A proposta aqui é produzir um insumo - a base de dados - a ser futuramente utilizada em estudos aprofundados sobre a temática das estratégias corporativas na indústria automotiva. Fundamentalmente o trabalho propiciará análises de caráter comparativo institucional e histórico, na medida que se observará como determinadas categorias evoluem e se transformam no tempo em instituições - no caso empresas ou setores de empresas - distintas.
 
 #### 1.2 Casos de uso
 Para elaboração, foram considerados alguns casos de uso e usuários típicos.
-1) o próprio autor do trabalho - a base de dados produzida será utilizada como parte da tese de doutorado do autor deste trabalho. Dessa maneira, espera-se que ela agilize processos de analise futuros e também permita gradativametne a inclusão de mais relatórios como fonte de dados.
+1) o próprio autor do trabalho - a base de dados produzida será utilizada como parte da tese de doutorado do autor deste trabalho. Dessa maneira, espera-se que ela agilize processos de análise futuros e também permita gradativamente a inclusão de mais relatórios como fonte de dados.
 2) colegas de grupo de pesquisa - a base será disponibilizada para colegas de pesquisa juntamente com os scripts python. Espera-se com isso que esses colegas, assumindo certa familiaridade com a linguagem, sejam capazes de reproduzir o sistema para relatórios de empresas de outros ramos, melhorar os tratamentos de texto e acrescentar novas formas de análise desse conteúdo. A disponibilização dos textos brutos com adequada identificação de página e relatório também se propõe a facilitar análises de pesquisadores que busquem ter abordagens qualitativas ou de análise de conteúdo tradicional.
-3) demais colegas da comunidade científica - por fim, a disponibilização da base de dados em si propõe-se a facilitar a investigação de quaisquer outros pesquisadores sobre a indústria automotiva. Para além dos dados disponibilizados nessa versão, espera-se com auxílio de colegas produzir um grande banco de dados referente a indústria automotiva que sirva de pontapé inicial para mais pesquisas sobre o setor, especialmente no campo da sociologia econômica.
+3) demais colegas da comunidade científica - por fim, a disponibilização da base de dados em si propõe-se a facilitar a investigação de quaisquer outros pesquisadores sobre a indústria automotiva. Para além dos dados disponibilizados nesta versão, espera-se com auxílio de colegas produzir um grande banco de dados referente a indústria automotiva que sirva de pontapé inicial para mais pesquisas sobre o setor, especialmente no campo da sociologia econômica.
 
 
 ### 2. Modelagem
 
 #### Desenho do sistema
-<p>O principal elemento do sistema será a base de dados. Assim, todo o primeiro conjunto de scripts diz respeito a produção dessa base. A partir dessa base serão utilizados scripts adicionais para análise desses dados. assim, o fluxo pode ser descrito como:</p>
+<p>O principal elemento do sistema será a base de dados. Assim, todo o primeiro conjunto de scripts diz respeito à produção dessa base. A partir dessa base serão utilizados scripts adicionais para análise desses dados. assim, o fluxo pode ser descrito como:</p>
 
 * Preparação de data frame via pandas que servirá de base
 * Extração do texto bruto dos relatórios via pyPDF2
@@ -62,7 +62,7 @@ A seguir, serão descritas brevemente essas etapas a partir da descrição dos s
 <p>As funções para realização das operações estão divididas em scripts principais divididos em 2 grupos: preparação da base de dados e análise dos dados coletados</p>
 
 ##### program.py - Execução do programa
-O script principal, acessa os demais scripts para execução. Inicialmente faz uma leitura do diretório buscando identificar a existência da base, caso não cria uma. Em seguida faz a listagem de todos os relatórios dentro da pasta para serem processados.
+O script principal, acessa os demais scripts para execução. Inicialmente faz uma leitura do diretório buscando identificar a existência da base, e caso não, cria uma. Em seguida faz a listagem de todos os relatórios dentro da pasta para serem processados.
 
 ```
 try:
@@ -82,7 +82,7 @@ print("Documentos processados: " +
     str(documents_list))
 ```
 
-Em seguida passa esses relatórios um a um via par ao script prepare_csv.py que realizará a preparação de cada relatório.
+Em seguida passa esses relatórios um a um para o script prepare_csv.py que realizará a preparação de cada relatório.
 
 ```
 for document in documents_list:
@@ -159,7 +159,7 @@ Por fim, a gravação dos metadados no dataframe é feita com o seguinte trecho
 ```
 
 ##### clean_text.py - limpeza inicial do texto e segmentação em sentenças
-especificamente trata os textos extraídos, separando em sentenças. É importante notar que, na extração de texto bruto, as sentenças frequentemente eram separadas por quebras de linha ('/n'). Em função disso, optou-se pela separação do texto em sentenças e não parágrafos. A seguinte função realiza a extração bruta do texto
+Especificamente trata os textos extraídos, separando em sentenças. É importante notar que, na extração de texto bruto, as sentenças frequentemente eram separadas por quebras de linha ('/n'). Em função disso, optou-se pela separação do texto em sentenças e não parágrafos. A seguinte função realiza a extração bruta do texto
 
 ```
 def extract_page_text(file_path, page):
@@ -172,7 +172,7 @@ def extract_page_text(file_path, page):
     return page_text
 ```
 
-Ja o trecho a seguir realiza a separação do texto de cada página em sentenças e realiza a limpeza de caractéres básica. Como forma de separação de sentenças usou-se a seguinte expressão regular: r"(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s"
+Já o trecho a seguir realiza a separação do texto de cada página em sentenças e realiza a limpeza de caracteres básica. Como forma de separação de sentenças usou-se a seguinte expressão regular: r"(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s"
 
 ```
 #trata o texto da página para ser uma lista de sentenças
@@ -194,7 +194,7 @@ def parse_page_text(page_text):
 ```
 
 ##### nltk_preprocessing.py - Pré processamento do texto bruto
-Realiza pré processamento de todo o texto bruto para a NLP e armazena o resultado em duas colunas: lems e tags. Para tais funções foi utilizada a biblioteca NLTK. O script abaixo realiza as limpezas necessárias. Isso é feito pela leitura do texto bruto na base salva, tokenização e passagem das palavras para minúsculas, remoção de stopwords, stemming e lemmetização. Adicionalmente é feito o taggeamento das palavras antes de passar por steeming e lemmetização.
+Realiza pré processamento de todo o texto bruto para a NLP e armazena o resultado em duas colunas: lems e tags. Para tais funções foi utilizada a biblioteca NLTK. O script abaixo realiza as limpezas necessárias. Isso é feito pela leitura do texto bruto na base salva, tokenização e passagem das palavras para minúsculas, remoção de stopwords, stemming e lematização. Adicionalmente é feito o tagueamento das palavras antes de passar por steeming e lematização.
 
 ```
 def nltk_cleaning(document_df):
@@ -234,7 +234,7 @@ def nltk_cleaning(document_df):
         tags_list.append(tags)
 ```
 
-Em seguida é realizada a concatenação dos dataframes com os textos pré-processados no dataframe original e novamente este é salvo como base.csv, concluíndo o processo.
+Em seguida é realizada a concatenação dos dataframes com os textos pré-processados no dataframe original e novamente este é salvo como base.csv, concluindo o processo.
 
 ##### sentiment.py
 Como prova de conceito da aplicabilidade do projeto, foi feita a análise de sentimentos de cada sentença a partir de um modelo pré-treinado. Os resultados são salvos em duas colunas referentes a polaridade e subjetividade das sentenças. O novo dataframe é salvo como um csv próprio.
@@ -261,47 +261,47 @@ Também se propõe utilizar os dados para realizar tanto uma identificação de 
 
 * id --> identificador único daquela sentença na base
 * text --> texto bruto extraído da sentença
-* document --> documento daonde foi extraída a sentença
+* document --> documento de onde foi extraída a sentença
 * year --> o ano ao qual se refere o documento
 * company --> empresa a qual se refere o documento
 * page --> a página do relatório onde aquela sentença está localizada
 
-Em seguida, como descrito a cima foram préprocessados os textos brutos, resultando em duas novas colunas:
+Em seguida, como descrito acima foram pré processados os textos brutos, resultando em duas novas colunas:
 
-* lems --> versão das sentenças já limpeza de stopwords, steeming e lemmetização
-* tags --> versão das sentenças com palavras sem steeming ou lemetização e com pos-tag
+* lems --> versão das sentenças já limpeza de stopwords, steeming e lematização
+* tags --> versão das sentenças com palavras sem steeming ou lematização e com pos-tag
 
 Todas as colunas acima foram agregadas na base base.csv. A imagem abaixo sumariza as colunas da base com base nas primeiras 20 linhas.
 
 ![alt text](./readme_images/1.jpg)
 
-Por fim, a prova de conceito de análise de sentimetno resultou em:
+Por fim, a prova de conceito de análise de sentimento resultou em:
 * polarity --> identificação do grau de positividade ou negatividade da sentença
 * subjectivity --> identificação do grau em que a sentença é considerada uma opinião subjetiva
-Essas colunas foram salvas apenas numa versão da base entitulada "sentiment.csv"
+Essas colunas foram salvas apenas numa versão da base intitulada "sentiment.csv"
 
 Futuramente propõe-se que serão adicionadas outros metadados sobre as sentenças:
 * words --> dicionário de contagem de palavras únicas na sentença
 * segment --> o trecho/seção do relatório ao qual a sentença pertence
 * topic --> classificação daquela sentença em tópico a partir de seu conteúdo
-* entities --> dicionário com as entidadaes identificadas na sentença
+* entities --> dicionário com as entidades identificadas na sentença
 
-<p>A proposição é que a base possa servir para agregações e análises tentao produzidas a partir de classificações não supervisionadas (tópicos, entidades), nativos/humanos (segmentos do relatório) ou classificações supervisionadas (sentimento).Essa abordagem permitira análises quantitativas e qualitativas do conteúdo dos relatórios, além de uma observação de transformações no tempo dos conteúdos presentes no texto e de sua associação a determinadas classificações nativas das organizações (ex. perceber ao longo do tempo que as sentenças relativas ao marketing se tornam mais frequentes e mais positivas, ao passo que sentenças relativas a recursos humanos passam a ser mais raras).</p>
+<p>A proposição é que a base possa servir para agregações e análises produzidas a partir de classificações não supervisionadas (tópicos, entidades), nativos/humanos (segmentos do relatório) ou classificações supervisionadas (sentimento). Essa abordagem permitirá análises quantitativas e qualitativas do conteúdo dos relatórios, além de uma observação de transformações no tempo dos conteúdos presentes no texto e de sua associação a determinadas classificações nativas das organizações (ex. perceber ao longo do tempo que as sentenças relativas ao marketing se tornam mais frequentes e mais positivas, ao passo que sentenças relativas a recursos humanos passam a ser mais raras).</p>
 
 
 ### 3. Resultados
 
-Como resultado inicial da análise de 9 relatórios obteve-se uma base de dados de 60.730 sentenças. Essas sentenças encontram-se já pré-processadas em versões com lemmetização e pos-tag. Adicionalmente, a fim de prova de conceito, utilizou-se os dados coletados jutnamente com a biblioteca textBlob para realizar uma análise de sentimento. Como prova de conceito do uso dos metadados dos relatórios, apresenta-se abaixo a evolução da polaridade das sentenças por ano. A tabela abaixo foi produzida com o script sentiment_group.py.
+Como resultado inicial da análise de 9 relatórios obteve-se uma base de dados de 60.730 sentenças. Essas sentenças encontram-se já pré-processadas em versões com lematização e pos-tag. Adicionalmente, a fim de prova de conceito, utilizou-se os dados coletados juntamente com a biblioteca textBlob para realizar uma análise de sentimento. Como prova de conceito do uso dos metadados dos relatórios, apresenta-se abaixo a evolução da polaridade das sentenças por ano. A tabela abaixo foi produzida com o script sentiment_group.py.
 
 ![alt text](./readme_images/3.jpg)
 
-Assim, espera-se que, com o crescimento da base via inserção de relatórios de utros anos e empresas, e complementação dos metadados (seja manualmente, automaticamente via técnicas supervisionadas ou não supervisionadas) seja possível realizar agregações e comparações do conteúdo textual - e seus significados - ao longo do tempo e também entre categorias distintas (por exemplo, observar a mudança do sentimento médio das sentenças em empresas distintas ou em seções distintas dos documentos).
+Assim, espera-se que, com o crescimento da base via inserção de relatórios de outros anos e empresas, e complementação dos metadados (seja manualmente, automaticamente via técnicas supervisionadas ou não supervisionadas) seja possível realizar agregações e comparações do conteúdo textual - e seus significados - ao longo do tempo e também entre categorias distintas (por exemplo, observar a mudança do sentimento médio das sentenças em empresas distintas ou em seções distintas dos documentos).
 
 ### 4. Conclusões
 
 O projeto acima obviamente não se encerra em si mesmo. Antes, busca ser uma prova de conceito da possibilidade de construção de uma base de dados a partir de relatórios corporativos e sua utilização para análises de conteúdo via processamento de linguagem natural. A variação da polaridade de sentimento médio ao longo dos anos demonstra a utilidade de tal ferramenta para análise sociológica. Novos agrupamentos e análises sofisticadas poderão ser feitos com a inclusão gradativa de mais metadados.
 
-Para além disso, o projeto coloca as bases para a inclusão de mais relatórios corporativos, de distintas empresas. Obviamente ajustes serão necessário, melhorias no pré-processamento de texto podem ser feitas e análises mais sofisticadas demandam modelos treinados especificamente, ao invés de modelos já prontos como o usado para análise de sentimentos.
+Para além disso, o projeto coloca as bases para a inclusão de mais relatórios corporativos, de distintas empresas. Obviamente ajustes serão necessários, melhorias no pré-processamento de texto podem ser feitas e análises mais sofisticadas demandam modelos treinados especificamente, ao invés de modelos já prontos como o usado para análise de sentimentos.
 
 Dito isso, o projeto faz interface entre áreas do conhecimento que não costumam possuir interação, a saber a antropologia dos documentos, a sociologia econômica e processamento de linguagem natural. Dessa forma, apresenta certo grau de ineditismo e acaba por contribuir para as citadas áreas de pesquisa.
 
