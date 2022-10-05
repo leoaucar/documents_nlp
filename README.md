@@ -89,7 +89,7 @@ for i in list:
 ##### prepare_csv.py - Preparação das tabelas
 Recebe os relatórios um a um e executa a preparação das tabelas com alocação de metadados baseados nos documentos. Primeira parte é a preparação de um data frame para o relatório a ser processado e identificação dos metadados.
 
-''' python
+'''
 for i in list:
     print(i)
 '''
@@ -109,7 +109,7 @@ for i in list:
 ##### clean_text.py - limpeza inicial do texto e segmentação em sentenças
 especificamente trata os textos extraídos, separando em sentenças. É importante notar que, na extração de texto bruto, as sentenças frequentemente eram separadas por quebras de linha ('/n'). Em função disso, optou-se pela separação do texto em sentenças e não parágrafos. A seguinte função realiza a extração bruta do texto
 
-''' python
+'''
 def extract_page_text(file_path, page):
     caminho = file_path
     pdfFileObj = open(caminho, 'rb')
@@ -122,7 +122,7 @@ def extract_page_text(file_path, page):
 
 Ja o trecho a seguir realiza a separação do texto de cada página em sentenças e realiza a limpeza de caractéres básica. Como forma de separação de sentenças usou-se a seguinte expressão regular: r"(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s"
 
-''' python
+'''
 #trata o texto da página para ser uma lista de sentenças
 def parse_page_text(page_text):
     parsed_text_list = []
