@@ -1,4 +1,5 @@
 from distutils.command.clean import clean
+from tkinter import N
 import PyPDF2
 import re
 
@@ -32,7 +33,7 @@ def export_page_txt(file_name, page_text):
 def parse_page_text(page_text):
     parsed_text_list = []
     #quebra em frases
-    pattern_split = r"(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s"
+    pattern_split = r"(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s" #considerar tamanho máximo de sentenças
     splitted_sentences = re.split(pattern_split, page_text)
     for i in splitted_sentences:
         #trata cada sentença separadamente
@@ -44,4 +45,18 @@ def parse_page_text(page_text):
             parsed_text_list.append(clean_sentence) #temporario para testar criador de tabela
 
     return parsed_text_list
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

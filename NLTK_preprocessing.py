@@ -31,8 +31,8 @@ def nltk_cleaning(document_df):
         lower_words = [word.lower() for word in word_tokenize(sent)]
         
         #tratamentos de texto
-        clean_words= (re.sub("[^A-Za-z']+", ' ', str(word)).lower() for word in lower_words)
-        clean_words= (word for word in clean_words if len(word) > 1)
+        clean_words = (re.sub("[^A-Za-z']+", ' ', str(word)).lower() for word in lower_words)
+        clean_words = (word for word in clean_words if len(word) > 1)
 
 
         #remover stopwords
