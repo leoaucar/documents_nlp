@@ -297,7 +297,7 @@ Futuramente propõe-se que serão adicionadas outros metadados sobre as sentenç
 
 ### 3. Resultados
 
-Como resultado inicial da análise de 9 relatórios obteve-se uma base de dados de XX000 mil sentenças. Essas sentenças encontram-se já pré-processadas em versões com lemmetização e pos-tag. Adicionalmente, a fim de prova de conceito, utilizou-se os dados coletados jutnamente com a biblioteca textBlob para realizar uma análise de sentimento. Como prova de conceito do uso dos metadados dos relatórios, apresenta-se abaixo a evolução da polaridade das sentenças por ano.
+Como resultado inicial da análise de 9 relatórios obteve-se uma base de dados de XX000 mil sentenças. Essas sentenças encontram-se já pré-processadas em versões com lemmetização e pos-tag. Adicionalmente, a fim de prova de conceito, utilizou-se os dados coletados jutnamente com a biblioteca textBlob para realizar uma análise de sentimento. Como prova de conceito do uso dos metadados dos relatórios, apresenta-se abaixo a evolução da polaridade das sentenças por ano. A tabela abaixo foi produzida com o script sentiment_group.py.
 
 IMAGEM
 
@@ -305,9 +305,11 @@ Assim, espera-se que, com o crescimento da base via inserção de relatórios de
 
 ### 4. Conclusões
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pulvinar nisl vestibulum tortor fringilla, eget imperdiet neque condimentum. Proin vitae augue in nulla vehicula porttitor sit amet quis sapien. Nam rutrum mollis ligula, et semper justo maximus accumsan. Integer scelerisque egestas arcu, ac laoreet odio aliquet at. Sed sed bibendum dolor. Vestibulum commodo sodales erat, ut placerat nulla vulputate eu. In hac habitasse platea dictumst. Cras interdum bibendum sapien a vehicula.
+O projeto acima obviamente não se encerra em si mesmo. Antes, busca ser uma prova de conceito da possibilidade de construção de uma base de dados a partir de relatórios corporativos e sua utilização para análises de conteúdo via processamento de linguagem natural. A variação da polaridade de sentimento médio ao longo dos anos demonstra a utilidade de tal ferramenta para análise sociológica. Novos agrupamentos e análises sofisticadas poderão ser feitos com a inclusão gradativa de mais metadados.
 
-Proin feugiat nulla sem. Phasellus consequat tellus a ex aliquet, quis convallis turpis blandit. Quisque auctor condimentum justo vitae pulvinar. Donec in dictum purus. Vivamus vitae aliquam ligula, at suscipit ipsum. Quisque in dolor auctor tortor facilisis maximus. Donec dapibus leo sed tincidunt aliquam.
+Para além disso, o projeto coloca as bases para a inclusão de mais relatórios corporativos, de distintas empresas. Obviamente ajustes serão necessário, melhorias no pré-processamento de texto podem ser feitas e análises mais sofisticadas demandam modelos treinados especificamente, ao invés de modelos já prontos como o usado para análise de sentimentos.
+
+Dito isso, o projeto faz interface entre áreas do conhecimento que não costumam possuir interação, a saber a antropologia dos documentos, a sociologia econômica e processamento de linguagem natural. Dessa forma, apresenta certo grau de ineditismo e acaba por contribuir para as citadas áreas de pesquisa.
 
 ---
 
