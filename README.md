@@ -1,29 +1,60 @@
-# README
-*Trabalho realizado por Leonardo Nogueira Aucar para conclusão do curso BI-Master pelo CCE da PUC-Rio
-*Orientadora: Evelyn ...
-*Data: setembro de 2022
+<!-- antes de enviar a versão final, solicitamos que todos os comentários, colocados para orientação ao aluno, sejam removidos do arquivo -->
+# Raspagem de relatórios da indústria automotiva para projeto de NLP
 
-## Objetivos, metodologia e casos de uso
+#### Aluno: [Nome Sobrenome](https://github.com/link_do_github)
+#### Orientadora: [Nome Sobrenome](https://github.com/link_do_github) e [Nome Sobrenome](https://github.com/link_do_github).
+#### Co-orientador(/a/es/as): [Nome Sobrenome](https://github.com/link_do_github) e [Nome Sobrenome](https://github.com/link_do_github). <!-- caso não aplicável, remover esta linha -->
 
-### Objetivo
-O sistema é desenhado em função de analisar relatórios anuais da industria automotiva. Ele visa permitir não só a extração de dados, mas assessorar pesquisadores da área através de analises textuais automatizadas. Isso se dará em quatro frentes:
+---
+
+Trabalho apresentado ao curso [BI MASTER](https://ica.puc-rio.ai/bi-master) como pré-requisito para conclusão de curso e obtenção de crédito na disciplina "Projetos de Sistemas Inteligentes de Apoio à Decisão".
+
+<!-- para os links a seguir, caso os arquivos estejam no mesmo repositório que este README, não há necessidade de incluir o link completo: basta incluir o nome do arquivo, com extensão, que o GitHub completa o link corretamente -->
+- [Link para o código](https://github.com/link_do_repositorio). <!-- caso não aplicável, remover esta linha -->
+
+- [Link para a monografia](https://link_da_monografia.com). <!-- caso não aplicável, remover esta linha -->
+
+- Trabalhos relacionados: <!-- caso não aplicável, remover estas linhas -->
+    - [Nome do Trabalho 1](https://link_do_trabalho.com).
+    - [Nome do Trabalho 2](https://link_do_trabalho.com).
+
+---
+
+### Resumo
+
+<!-- trocar o texto abaixo pelo resumo do trabalho, em português -->
+
+O sistema é desenhado em função de analisar relatórios anuais da industria automotiva. Ele visa permitir não só a extração de dados, mas assessorar pesquisadores da área através de analises textuais automatizadas. Para isso ele realiza a raspagem de todo o texto dos relatórios e separa em sentenças. Posteriormente é feita a limpeza dessas sentenças e seu pré-processamento, resultando em duas versões das sentenças: lemmetizadas e com pos-tag. Foi então, a título de prova de conceito, realizada a análise de sentimentos dessas sentenças com base na biblioteca TextBlob. Pode-se resumir os objetivos do projeto:
 
 * Produção de um banco de dados a partir dos conteúdos textuais de relatórios da indústria automotiva
-* análises de conteúdo simples/quantitativas
-* análises não supervisionadas do conteúdo dos textos
-* análises supervisionadas          ''   ''
-* disponibilização do banco de dados e análises para outros pesquisadores
+* Fornecer insumos para análises de conteúdo simples/quantitativas
+* Fornecer insumos para análises não supervisionadas do conteúdo dos textos
+* Forneceser insumos para análises supervisionadas do conteúdo dos textos
 
-### Metodologia
-<p>O trabalho se baseaia em três grandes campos de produção de conhecimento nas ciências sociais contemporâneas. O primeiro diz respeito aos impactos da grande disponibilidade de dados na pesquisa sociológica (fonte), particularmente as discussões metodológicas sobre as formas apropriadas de se utilizar esses dados para produção de teoria (fonte).</p>
-<p>O segundo diz respeito as discussões sobre uso de documentos como artefatos etnográficos e como componentes de uma perspectiva sociomaterial das organizações... ontologia, smith, etc</p>
-<p>Por fim, remete a discussões contemporâneas sobre o uso de novas técnicas de machine learning, particularmente de processamento de linguagem natural (NLP) para produção de teoria sociológica. Nesse campo... falar os dois artigos</p>
+### Abstract <!-- Opcional! Caso não aplicável, remover esta seção -->
 
-### Casos de uso
+<!-- trocar o texto abaixo pelo resumo do trabalho, em inglês -->
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pulvinar nisl vestibulum tortor fringilla, eget imperdiet neque condimentum. Proin vitae augue in nulla vehicula porttitor sit amet quis sapien. Nam rutrum mollis ligula, et semper justo maximus accumsan. Integer scelerisque egestas arcu, ac laoreet odio aliquet at. Sed sed bibendum dolor. Vestibulum commodo sodales erat, ut placerat nulla vulputate eu. In hac habitasse platea dictumst. Cras interdum bibendum sapien a vehicula.
+
+Proin feugiat nulla sem. Phasellus consequat tellus a ex aliquet, quis convallis turpis blandit. Quisque auctor condimentum justo vitae pulvinar. Donec in dictum purus. Vivamus vitae aliquam ligula, at suscipit ipsum. Quisque in dolor auctor tortor facilisis maximus. Donec dapibus leo sed tincidunt aliquam.
+
+Donec molestie, ante quis tempus consequat, mauris ante fringilla elit, euismod hendrerit leo erat et felis. Mauris faucibus odio est, non sagittis urna maximus ut. Suspendisse blandit ligula pellentesque tincidunt malesuada. Sed at ornare ligula, et aliquam dui. Cras a lectus id turpis accumsan pellentesque ut eget metus. Pellentesque rhoncus pellentesque est et viverra. Pellentesque non risus velit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+
+### 1. Introdução
+
+O trabalho se insere simultaneamente no campo da sociologia econômica e das ciências da computação. Dessa maneira, propõe utilização de metodologias de localização e obtenção de dados (fonte) e também de processamento de linguagem natural comuns a ciência da computação (livro NLP) para produção de análises sociológicas. Se alinha portanto a uma perspectiva estrutural e de rede, que vê documentos corporativos enquanto artefatos que podem ser mobilizados como proxy do comportamento organizacional e portanto, que podem ser analisados enquanto proxy para compreensão do vocabulário de motivos (fonte Mills) e quadro moral (fonte) da ação organizacional. A ênfase em documentos enquanto artefatos, para além sua consideração enquanto artefatos etnográficos, que se incluem na tradição da antropologia dos documentos e burocracia (fonte lowkron, fonte hull), também dialoga com a compreensão das organizações econômicas enquanto redes sociomateriais (fonte latour), onde os documentos fazem extamente o papel de agregação de associações capazes de colocar a organização em movimento.
+
+#### 1.1 Metodologia
+
+
+#### 1.2 Casos de uso
 <p>O usuário (caracterísitcas, pesquisador)...</p>
 <p>uso primário: por mim mesmo</p>
 <p>uso secundário: o banco de dados</p>
 
+
+### 2. Modelagem
 
 ## Desenho do sistema
 <p>O principal elemento do sistema será a base de dados. Assim, todo o primeiro conjunto de scripts diz respeito a produção dessa base. A partir dessa base serão utilizados scripts adicionais para análise desses dados. assim, o fluxo pode ser descrito como: Produção da base --> Análise a partir de hipóteses iniciais --> identificação de novas hipóteses --> (re)análise --> etc</p>
@@ -44,7 +75,7 @@ O sistema é desenhado em função de analisar relatórios anuais da industria a
 * empresa --> empresa a qual se refere o documento
 * page --> a página do relatório onde aquela sentença está localizada
 * length --> cumprimento da sentença
-* words --> dicionário de contágem de palavras únicas na sentença
+* words --> dicionário de contagem de palavras únicas na sentença
 * segment --> o trecho/seção do relatório ao qual a sentença pertence
 * topic --> classificação daquela sentença em tópico a partir de seu conteúdo
 * entities --> dicionário com as entidadaes identificadas na sentença
@@ -57,8 +88,6 @@ O sistema é desenhado em função de analisar relatórios anuais da industria a
 ### Scripts e funções
 <p>as funções para realização das operações estão divididas em scripts principais divididos em 2 grupos: preparação da base de dados e análise dos dados coletados</p>
 
-#### Preparação da base de dados
-
 ##### programa.py - Execução do programa
 acessa diretamente os diretórios e arquivos e chama o prepare csv
 ##### prepare_csv.py - Preparação das tabelas
@@ -70,24 +99,22 @@ recebe manualmente a identificação de que partes dos relatórios são referent
 ##### nlp_preprocessing.py - Pré processamento do texto bruto
 realiza pré processamento de todo o texto bruto para a NLP e armazena numa coluna que será acessada pelas outras análises de NLP
 
-#### Análises dos dados coletados
+### 3. Resultados
 
-##### content_analisys.py
-##### sentiment analysis.py
-##### entitie identifications
-##### word2vec analysis
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pulvinar nisl vestibulum tortor fringilla, eget imperdiet neque condimentum. Proin vitae augue in nulla vehicula porttitor sit amet quis sapien. Nam rutrum mollis ligula, et semper justo maximus accumsan. Integer scelerisque egestas arcu, ac laoreet odio aliquet at. Sed sed bibendum dolor. Vestibulum commodo sodales erat, ut placerat nulla vulputate eu. In hac habitasse platea dictumst. Cras interdum bibendum sapien a vehicula.
 
-O Script programa.py executa as funções principais. Nos scripts auxiliares estão as definições de funções.
+Proin feugiat nulla sem. Phasellus consequat tellus a ex aliquet, quis convallis turpis blandit. Quisque auctor condimentum justo vitae pulvinar. Donec in dictum purus. Vivamus vitae aliquam ligula, at suscipit ipsum. Quisque in dolor auctor tortor facilisis maximus. Donec dapibus leo sed tincidunt aliquam.
 
-Em prepare_csv.py:
+### 4. Conclusões
 
-create_table()
-cria um dataframe vazio com as colunas necessárias.
-retorna o dataframe
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pulvinar nisl vestibulum tortor fringilla, eget imperdiet neque condimentum. Proin vitae augue in nulla vehicula porttitor sit amet quis sapien. Nam rutrum mollis ligula, et semper justo maximus accumsan. Integer scelerisque egestas arcu, ac laoreet odio aliquet at. Sed sed bibendum dolor. Vestibulum commodo sodales erat, ut placerat nulla vulputate eu. In hac habitasse platea dictumst. Cras interdum bibendum sapien a vehicula.
 
-fill_table(file_path) --> recebe um caminho de arquivo
-cria e preenche o dataframe anteriormente a partir do texto contido no arquivo de file_path
-retorna o dataframe preenchido
+Proin feugiat nulla sem. Phasellus consequat tellus a ex aliquet, quis convallis turpis blandit. Quisque auctor condimentum justo vitae pulvinar. Donec in dictum purus. Vivamus vitae aliquam ligula, at suscipit ipsum. Quisque in dolor auctor tortor facilisis maximus. Donec dapibus leo sed tincidunt aliquam.
 
-concat_new_df(consolidated_documents_df, new_documents_table) --> recebe a versao mais atual da base e concatena as novas infos
-retorna a base atualizada
+---
+
+Matrícula: 123.456.789
+
+Pontifícia Universidade Católica do Rio de Janeiro
+
+Curso de Pós Graduação *Business Intelligence Master*

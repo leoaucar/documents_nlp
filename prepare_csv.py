@@ -5,7 +5,6 @@ import re
 
 from clean_text import extract_page_text, parse_page_text, doc_length
 
-
 #cria uma tabela com as colunas corretas
 def create_table():
     columns = ["id","text","document","year","company","page",
