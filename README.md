@@ -275,7 +275,7 @@ Em seguida, como descrito a cima foram préprocessados os textos brutos, resulta
 
 Todas as colunas acima foram agregadas na base base.csv. A imagem abaixo sumariza as colunas da base com base nas primeiras 20 linhas.
 
-IMAGEM
+![alt text](./readme_images/teste.jpg)
 
 Por fim, a prova de conceito de análise de sentimetno resultou em:
 * polarity --> identificação do grau de positividade ou negatividade da sentença
@@ -284,7 +284,7 @@ Essas colunas foram salvas apenas numa versão da base entitulada "sentiments.cs
 
 A imagem abaixo sumariza os resultados da análise de sentimentos para as 20 primeiras linhas.
 
-IMAGEM
+![alt text](./readme_images/teste.jpg)
 
 Futuramente propõe-se que serão adicionadas outros metadados sobre as sentenças:
 * words --> dicionário de contagem de palavras únicas na sentença
@@ -299,7 +299,7 @@ Futuramente propõe-se que serão adicionadas outros metadados sobre as sentenç
 
 Como resultado inicial da análise de 9 relatórios obteve-se uma base de dados de XX000 mil sentenças. Essas sentenças encontram-se já pré-processadas em versões com lemmetização e pos-tag. Adicionalmente, a fim de prova de conceito, utilizou-se os dados coletados jutnamente com a biblioteca textBlob para realizar uma análise de sentimento. Como prova de conceito do uso dos metadados dos relatórios, apresenta-se abaixo a evolução da polaridade das sentenças por ano. A tabela abaixo foi produzida com o script sentiment_group.py.
 
-IMAGEM
+![alt text](./readme_images/teste.jpg)
 
 Assim, espera-se que, com o crescimento da base via inserção de relatórios de utros anos e empresas, e complementação dos metadados (seja manualmente, automaticamente via técnicas supervisionadas ou não supervisionadas) seja possível realizar agregações e comparações do conteúdo textual - e seus significados - ao longo do tempo e também entre categorias distintas (por exemplo, observar a mudança do sentimento médio das sentenças em empresas distintas ou em seções distintas dos documentos).
 
